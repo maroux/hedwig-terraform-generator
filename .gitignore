@@ -1,0 +1,26 @@
+# Logs
+*.log
+
+# Pycharm
+.idea
+*.iml
+
+# Vim
+
+*~
+*.swp
+*.swo
+
+# emacs
+.dir-locals.el
+
+# auto-generated
+hedwig
+
+# godeps
+vendor/*
+!vendor/vendor.json
+
+# binary
+bin
+bindata.go

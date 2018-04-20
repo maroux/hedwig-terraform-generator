@@ -1,0 +1,39 @@
+{
+    "queue_consumers": [
+        {
+            "queue": "DEV-MYAPP",
+            "tags": {
+                "App": "myapp",
+                "Env": "dev"
+            },
+            "subscriptions": [
+              "my-topic",
+              "my-topic2"
+            ]
+        },
+        {
+            "queue": "DEV-SECONDAPP",
+            "tags": {
+                "App": "secondapp",
+                "Env": "dev"
+            },
+            "subscriptions": [
+              "my-topic2"
+            ]
+        }
+    ],
+    "lambda_consumers": [
+      {
+        "function_arn": "arn:aws:lambda:us-west-2:12345:function:myFunction:deployed",
+        "function_name": "myFunction",
+        "function_qualifier": "deployed",
+        "subscriptions": [
+          "my-topic"
+        ]
+      }
+    ],
+    "topics": [
+        "my-topic",
+        "my-topic2"
+    ]
+}

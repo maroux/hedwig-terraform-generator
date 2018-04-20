@@ -1,0 +1,10 @@
+{{ tfDoNotEditStamp }}
+
+{{range .Topics -}}
+module "topic-{{hclident .}}" {
+  source  = "Automatic/hedwig-topic/aws"
+  version = "~> {{TFTopicModuleVersion}}"
+
+  topic = "{{.}}"
+}
+{{- end}}

@@ -1,0 +1,17 @@
+{
+    "queue_consumers": [
+        {
+            "queue": "DEV-MYAPP",
+            "tags": {
+                "App": "myapp",
+                "Env": "dev"
+            },
+            "subscriptions": [
+                "my-topic"
+            ]
+        }
+    ],
+    "topics": [
+        "my-topic"
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "lambda_consumers": [
+      {
+        "function_arn": "arn:aws:lambda:us-west-2:12345:function:my_function",
+        "subscriptions": [
+          "my-topic"
+        ]
+      }
+    ],
+    "topics": [
+        "my-topic"
+    ]
+}

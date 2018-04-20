@@ -1,0 +1,26 @@
+{{ tfDoNotEditStamp }}
+
+{{range .QueueConsumers -}}
+module "consumer-{{hclident .Queue}}" {
+  source  = "Automatic/hedwig-queue/aws"
+  version = "~> {{TFQueueModuleVersion}}"
+
+  queue          = "{{.Queue}}"
+  aws_region     = "${var.aws_region}"
+  aws_account_id = "${var.aws_account_id}"
+  {{ with alerting -}}
+    alerting       = "true"
+  {{- end }}
+
+  {{with .Tags -}}
+  tags = {{hclvalue .}}
+  {{- end}}
+
+  {{if alerting -}}
+      dlq_alarm_high_message_count_actions   = {{ hclvalue actions.DLQAlertAlarmActions }}
+      dlq_ok_high_message_count_actions      = {{ hclvalue actions.DLQAlertOKActions }}
+      queue_alarm_high_message_count_actions = {{ hclvalue actions.QueueAlertAlarmActions }}
+      queue_ok_high_message_count_actions    = {{ hclvalue actions.QueueAlertOKActions }}
+  {{- end}}
+}
+{{- end}}

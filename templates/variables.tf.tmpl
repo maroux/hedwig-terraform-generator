@@ -1,0 +1,13 @@
+{{ tfDoNotEditStamp }}
+
+variable "aws_account_id" {
+{{if variables.AwsAccountID -}}
+  default = "{{ variables.AwsAccountID }}"
+{{- end}}
+}
+
+variable "aws_region" {
+{{if variables.AwsRegion -}}
+  default = "{{ variables.AwsRegion }}"
+{{- end}}
+}
