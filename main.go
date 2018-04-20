@@ -20,10 +20,10 @@ const (
 	// TFQueueSubscriptionModuleVersion represents the version of the hedwig-queue-subscription module
 	TFQueueSubscriptionModuleVersion = "1.0.0"
 
-	// TFLambdaSubscriptionModuleVersion represents the version of the taskhawk-lambda-subscription module
+	// TFLambdaSubscriptionModuleVersion represents the version of the hedwig-lambda-subscription module
 	TFLambdaSubscriptionModuleVersion = "1.0.0"
 
-	// TFTopicModuleVersion represents the version of the taskhawk-topic module
+	// TFTopicModuleVersion represents the version of the hedwig-topic module
 	TFTopicModuleVersion = "1.0.0"
 
 	tfDoNotEditStamp = `// DO NOT EDIT
