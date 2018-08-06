@@ -8,6 +8,9 @@ module "consumer-{{hclident .Queue}}" {
   queue          = "{{.Queue}}"
   aws_region     = "${var.aws_region}"
   aws_account_id = "${var.aws_account_id}"
+  {{ with iam -}}
+    iam = "true"
+  {{- end }}
   {{ with alerting -}}
     alerting       = "true"
   {{- end }}

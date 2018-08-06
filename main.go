@@ -46,6 +46,9 @@ const (
 	// dlqAlertOKActionsFlag represents the cli flag for DLQ alert actions on OK
 	dlqAlertOKActionsFlag = "dlq-alert-ok-actions"
 
+	// iamFlag represents the cli flag for iam generation
+	iamFlag = "iam"
+
 	// moduleFlag represents the cli flag for output module name
 	moduleFlag = "module"
 
@@ -169,6 +172,10 @@ func runApp(args []string) error {
 				cli.BoolFlag{
 					Name:  alertingFlag,
 					Usage: "Should Cloudwatch alerting be generated?",
+				},
+				cli.BoolFlag{
+					Name:  iamFlag,
+					Usage: "Should IAM policies be generated?",
 				},
 				cli.StringSliceFlag{
 					Name:  queueAlertAlarmActionsFlag,

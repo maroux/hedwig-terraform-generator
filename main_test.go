@@ -27,6 +27,7 @@ func argsForTest(configFilepath string) []string {
 		"generate",
 		configFilepath,
 		"--alerting",
+		"--iam",
 		fmt.Sprintf(`--%s=12345`, awsAccountIDFlag),
 		fmt.Sprintf(`--%s=us-west-2`, awsRegionFlag),
 		fmt.Sprintf(`--%s=pager_action`, queueAlertAlarmActionsFlag),

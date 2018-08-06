@@ -8,6 +8,7 @@ module "consumer-dev-myapp" {
   queue          = "DEV-MYAPP"
   aws_region     = "${var.aws_region}"
   aws_account_id = "${var.aws_account_id}"
+  iam            = "true"
   alerting       = "true"
 
   tags = {
@@ -43,6 +44,7 @@ module "consumer-dev-secondapp" {
   queue          = "DEV-SECONDAPP"
   aws_region     = "${var.aws_region}"
   aws_account_id = "${var.aws_account_id}"
+  iam            = "true"
   alerting       = "true"
 
   tags = {

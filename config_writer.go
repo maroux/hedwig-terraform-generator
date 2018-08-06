@@ -71,6 +71,7 @@ func initTemplates(c *cli.Context) (*template.Template, error) {
 	templates := template.New("variables.tf.tmpl")
 	templates = templates.Funcs(template.FuncMap{
 		"generator_version": func() string { return VERSION },
+		"iam":               func() bool { return c.Bool(iamFlag) },
 		"actions":           func() map[string][]string { return actions },
 		"variables":         func() map[string]string { return variables },
 		"hclvalue":          hclvalue,
