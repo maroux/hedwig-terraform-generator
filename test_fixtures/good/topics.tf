@@ -8,7 +8,7 @@ module "topic-my-topic" {
   topic = "my-topic"
 }
 
-module "topic-my-topic2" {
+module "topic-my-topic-2" {
   source  = "Automatic/hedwig-topic/aws"
   version = "~> {{TFTopicModuleVersion}}"
 

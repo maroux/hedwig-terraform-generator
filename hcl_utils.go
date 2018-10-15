@@ -119,7 +119,7 @@ func hcllist(rv reflect.Value) string {
 // convert to string suitable to be used as a identifier name in HCL
 // doesn't handle TF interpolated strings nicely
 func hclident(s string) string {
-	return strings.Replace(xstrings.ToSnakeCase(s), "_", "-", -1)
+	return xstrings.ToKebabCase(s)
 }
 
 type reflectMapKeyList []reflect.Value

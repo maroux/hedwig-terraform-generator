@@ -7,7 +7,7 @@ module "sub-{{hclident $consumer.Queue}}-{{hclident .}}" {
   version = "~> {{TFQueueSubscriptionModuleVersion}}"
 
   queue = "${module.consumer-{{hclident $consumer.Queue}}.queue_arn}"
-  topic = "${module.topic-{{.}}.arn}"
+  topic = "${module.topic-{{hclident .}}.arn}"
 }
 {{- end}}
 {{- end}}
@@ -21,7 +21,7 @@ module "sub-{{$consumer.FunctionName | hclident }}-{{hclident .}}" {
   function_arn       = "{{$consumer.FunctionARN}}"
   function_name      = "{{$consumer.FunctionName}}"{{if $consumer.FunctionQualifier}}
   function_qualifier = "{{$consumer.FunctionQualifier}}"{{end}}
-  topic              = "${module.topic-{{.}}.arn}"
+  topic              = "${module.topic-{{hclident .}}.arn}"
 }
 {{- end}}
 {{- end}}
