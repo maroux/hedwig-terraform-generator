@@ -1,8 +1,39 @@
+sudo: false
+
 language: go
+
 go:
-- 1.10.x
-- master
+  - "1.11.x"
+  - tip
+
+env:
+  GO111MODULE=on
+
+git:
+  depth: 1
+
+matrix:
+  allow_failures:
+  - go: tip
+  fast_finish: true
+
+install:
+- GO111MODULE=off go get github.com/go-bindata/go-bindata/...
+- go-bindata -debug -prefix "templates/" templates/
+- go get -mod=readonly -v ./...
+- go get -u github.com/client9/misspell/cmd/misspell
+- go get -u honnef.co/go/tools/cmd/staticcheck
+
+
+before_script:
+- go vet
+- go mod verify
+- misspell -error -locale US *.go
+- staticcheck -checks all,-ST1003,-ST1005
+- ./.travis.gofmt.sh
+
 script: make test
+
 notifications:
   slack:
     secure: Gea+5dyolkQIe5JyXKXBeKLiGQ/x+EW9aGOmC4Ot20dY2DC8JN+OV0x9kjgy3vEi2U3+q3qOdp5vrgYRfhNEZi9cggk9Yn3zY9fW4DIgd5vFqYa6O4cJS+7hpBGaDfNLVpz1Du+L+5TXg4Bc5DmFBZYsEuidyd2nngu3MsWynkbZE0+xwXVVGbpkM6oDj+z7g5W6sGS7EWUKN7Mtzpa+MOd7AccZk8D3H4ci3df8Wz1NcRzOuIvEi6+1bvSlt1xm8NVB5rrGu7ZVSQZHatnjP792ITFJkgmwmFLhB4vrqWleuxHC8jqCTujXI2IhsRtPaExoakmGCjb/w8t/MCy1MbA30YUaOPW+7Q2owGe7aElb8dPBmAFTJomRV7RmIeGmeUrnZX9ZWUziB4A4/DAyTZinSU9rM+YPn3BBTO65y4GNHAF0xiNGDg3bCxL4hrIiWMhwB8UlJnzhPXAZJVp0HhDHm/sX3G0+8NZG11+2FrrAwCURWBbqjPoAl5cFgujco6+bNlvew9ncd0EMSbxuQPf9RKx8bb84deDdtw1FG6gr8W4ZzRITCSjqzBKxw5kCuXcElF3XrMmLaVhnJW2sWJkKSeU/JVunRmFWfK9SD1ZKkfhRGSNnLLfvwQGcS6N+NzUslS+DKr9m8dewZGC0DHZeiT+EHzC7tdnzezJbWcE=
