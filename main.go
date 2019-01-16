@@ -12,7 +12,7 @@ import (
 
 const (
 	// VERSION represents the version of the generator tool
-	VERSION = "2.0.0"
+	VERSION = "v1.0.0"
 
 	// TFQueueModuleVersion represents the version of the hedwig-queue module
 	TFQueueModuleVersion = "1.0.0"
